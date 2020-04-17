@@ -10,7 +10,7 @@ const NewSongFrom = ({addSong}) => {
     return (
         <form onSubmit={handleSubmit}>
             <label>Song Name</label>
-            <input type="text" value={title} required onChange={(e) => setTitle(e.target.value)}/>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
             <input type="submit" value="add song"/>
         </form>
     )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import uuid from 'uuid/v1';
 import NewSongFrom from './NewSongFrom';
 
@@ -17,9 +17,17 @@ const SongList = () => {
             id: 3
         }
     ]);
+    const [age, setAge] = useState(20)
     const addSong = (title) => {
         setSongs([...songs, { title, id: uuid() }]);
     }
+    useEffect(() => {
+        console.log('useeffect hook ran', songs);
+    }, [songs])
+
+    useEffect(() => {
+        console.log('useeffect hook ran', age);
+    }, [age])
     return (
         <div className="song-list">
             <ul>
@@ -28,6 +36,7 @@ const SongList = () => {
                 })}
             </ul>
             <NewSongFrom addSong={addSong}/>
+            <button onClick={() => setAge(age + 1)}>Add 1 to age: {age}</button>
         </div>
     );
 }
